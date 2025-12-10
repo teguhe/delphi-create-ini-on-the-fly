@@ -28,6 +28,7 @@ object Form1: TForm1
     Height = 25
     Caption = 'Hapus config.ini'
     TabOrder = 1
+    OnClick = btHapusClick
   end
   object btLoad: TButton
     Left = 16

@@ -18,6 +18,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure btCheckClick(Sender: TObject);
     procedure btLoadClick(Sender: TObject);
+    procedure btHapusClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -76,6 +77,43 @@ begin
   begin
         MessageDlg('file configuration.ini tersedia!', TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0);
   end;
+
+end;
+
+procedure TForm1.btHapusClick(Sender: TObject);
+begin
+
+  { TODO : cek apakah file config ada }
+  if FileExists(ConfigFile) then
+  begin
+    if MessageDlg('hapus file configuration.ini?', TMsgDlgType.mtConfirmation, mbYesNo, 0)=mrYES
+      then
+        begin
+        DeleteFile(ConfigFile);
+        MessageDlg('file configuration.ini berhasil dihapus!', TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0);
+        end;
+  end
+  else
+  begin
+        MessageDlg('file configuration.ini tidak tersedia!', TMsgDlgType.mtWarning, [TMsgDlgBtn.mbOK], 0);
+  end;
+
+  { TODO : cek apakah folder config ada }
+  if TDirectory.Exists(ConfigDir) then
+  begin
+    if MessageDlg('Hapus direktori konfigurasi?', TMsgDlgType.mtConfirmation, mbYesNo, 0)=mrYES
+      then
+        begin
+        TDirectory.Delete(ConfigDir);
+        MessageDlg('Direktori berhasil dihapus!', TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0);
+        end;
+  end
+  else
+  begin
+        MessageDlg('Direktori config tidak tersedia!', TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0);
+  end;
+
+
 
 end;
 
