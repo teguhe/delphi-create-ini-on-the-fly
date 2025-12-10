@@ -36,6 +36,7 @@ object Form1: TForm1
     Height = 25
     Caption = 'Baca config.ini'
     TabOrder = 2
+    OnClick = btLoadClick
   end
   object mmoIni: TMemo
     Left = 16
